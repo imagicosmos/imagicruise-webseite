@@ -1,0 +1,7 @@
+# Imagicruise - reine Informationsseite ohne private Inhalte.
+# Alle Suchmaschinen und KI-Dienste duerfen lesen (wie bei imagichron.de, entschieden 11.11.2026).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://imagicruise.de/sitemap.xml

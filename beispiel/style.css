@@ -1,0 +1,235 @@
+/* =====================================================================
+   Imagicruise – Reisebericht (Abspieler)
+   Farben „Marine“ wie das Icon (imagicosmos/marke). Hell und dunkel über data-modus am <html>.
+   Lädt nichts von fremden Servern: Systemschrift, dazu Josefin Sans (liegt bei) für die Überschriften.
+   ===================================================================== */
+@font-face{ font-family:"Josefin Sans"; font-weight:700; font-style:normal; font-display:swap; src:url("schriften/josefin-sans-latin-700-normal.woff2") format("woff2"); }
+
+:root{
+  --breite:1080px;
+  --schrift:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --titel:"Josefin Sans","Segoe UI",system-ui,sans-serif;
+  --radius:14px; --radius-klein:9px;
+  --grund:#f3f4fb; --flaeche:#ffffff; --flaeche-2:#e9ebf8; --text:#15182c; --leise:#4a4f6c; --linie:#d7daee;
+  --akzent:#4338ca; --akzent-2:#312e81; --akzent-hell:#e3e5fb; --akzent-text:#ffffff; --sonne:#b45309; --sonne-hell:#fbbf24;
+  --schatten:0 1px 2px rgba(30,27,75,.06), 0 8px 26px rgba(30,27,75,.09);
+  --meer:#dce4f9; --land:#fbf8ef; --kueste:#aab3d6; --route:#4338ca; --fluss:#9db3ec;
+  color-scheme:light;
+}
+[data-modus="dunkel"]{
+  --grund:#0c0e1d; --flaeche:#161a31; --flaeche-2:#1f2442; --text:#eef0ff; --leise:#b0b6d8; --linie:#2c325a;
+  --akzent:#a5b4fc; --akzent-2:#c7d2fe; --akzent-hell:#262c5c; --akzent-text:#10122b; --sonne:#fbbf24; --sonne-hell:#fbbf24;
+  --schatten:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  --meer:#121836; --land:#2a3058; --kueste:#4a5290; --route:#a5b4fc; --fluss:#3f5196;
+  color-scheme:dark;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ transition:none !important; animation:none !important; } }
+body{ margin:0; background:var(--grund); color:var(--text); font:17px/1.6 var(--schrift); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+img{ max-width:100%; display:block; }
+a{ color:var(--akzent); }
+h1,h2,h3{ font-family:var(--titel); font-weight:700; line-height:1.12; margin:0; letter-spacing:-.005em; }
+p{ margin:0; }
+button{ font:inherit; color:inherit; cursor:pointer; }
+:focus-visible{ outline:3px solid var(--akzent); outline-offset:2px; border-radius:4px; }
+.skip{ position:absolute; left:-9999px; } .skip:focus{ left:12px; top:12px; z-index:99; background:var(--flaeche); padding:8px 12px; }
+.breite{ max-width:var(--breite); margin:0 auto; padding:0 20px; }
+.lade{ padding:80px 20px; text-align:center; color:var(--leise); }
+.leise{ color:var(--leise); }
+.fliess p + p{ margin-top:.8em; }
+.fliess{ overflow-wrap:anywhere; }
+
+/* ---------- Kopfleiste ---------- */
+.kopf{ position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--grund) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--linie); }
+.kopf .breite{ display:flex; align-items:center; gap:12px; min-height:54px; }
+.kopf-titel{ font-family:var(--titel); font-weight:700; font-size:1.05rem; color:var(--text); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0; padding-top:3px; }
+.knopf-rund{ width:40px; height:40px; border-radius:50%; border:1px solid var(--linie); background:var(--flaeche); display:grid; place-items:center; flex:none; }
+.knopf-rund svg{ width:20px; height:20px; }
+[data-modus="hell"] .mond, [data-modus="dunkel"] .sonne{ display:none; }
+
+/* ---------- Tagesleiste ---------- */
+.tagesleiste{ display:flex; gap:8px; overflow-x:auto; padding:10px 20px; scrollbar-width:thin; scrollbar-color:var(--linie) transparent; max-width:var(--breite); margin:0 auto; scroll-padding:0 60px; }
+.tagesleiste a{ flex:none; text-decoration:none; color:var(--text); background:var(--flaeche); border:1px solid var(--linie); border-radius:999px; padding:6px 14px 6px 8px; font-size:.86rem; display:flex; align-items:center; gap:8px; white-space:nowrap; }
+.tagesleiste a b{ background:var(--flaeche-2); border-radius:999px; min-width:26px; height:26px; display:grid; place-items:center; font-size:.8rem; padding:0 6px; }
+.tagesleiste a[aria-current]{ background:var(--akzent); border-color:var(--akzent); color:var(--akzent-text); }
+.tagesleiste a[aria-current] b{ background:rgba(255,255,255,.22); color:inherit; }
+.tagesleiste a.leer{ opacity:.6; }
+
+/* ---------- Titelseite ---------- */
+.held{ position:relative; min-height:min(78vh,720px); display:flex; align-items:flex-end; color:#fff; background:linear-gradient(135deg,#1e1b4b,#4338ca 55%,#818cf8); overflow:hidden; }
+.held img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.held::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,13,45,.15) 0%, rgba(15,13,45,.1) 40%, rgba(15,13,45,.82) 100%); }
+.held .breite{ position:relative; z-index:1; width:100%; padding-top:120px; padding-bottom:44px; }
+.held .vorzeile{ font-size:.8rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; display:flex; gap:10px; align-items:center; margin-bottom:14px; }
+.held .vorzeile::before{ content:""; width:28px; height:3px; border-radius:2px; background:var(--sonne-hell); }
+.held h1{ font-size:clamp(2.4rem,7.5vw,5.2rem); text-wrap:balance; text-shadow:0 2px 18px rgba(0,0,0,.35); }
+.held .unter{ font-size:clamp(1.05rem,2.2vw,1.35rem); margin-top:12px; max-width:40em; text-shadow:0 1px 10px rgba(0,0,0,.4); }
+.held .angaben{ display:flex; flex-wrap:wrap; gap:8px 10px; margin-top:22px; padding:0; list-style:none; }
+.held .angaben li{ background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); backdrop-filter:blur(6px); border-radius:999px; padding:5px 14px; font-size:.9rem; }
+
+.abschnitt{ padding:56px 0; }
+.abschnitt + .abschnitt{ padding-top:8px; }
+.abschnitt h2{ font-size:clamp(1.6rem,3.4vw,2.2rem); margin-bottom:18px; }
+.einleitung{ font-size:1.12rem; max-width:44em; }
+
+.zahlen{ display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin:28px 0 0; padding:0; list-style:none; }
+.zahlen li{ background:var(--flaeche); border:1px solid var(--linie); border-radius:var(--radius); padding:14px 16px; }
+.zahlen b{ display:block; font-family:var(--titel); font-size:2rem; line-height:1; color:var(--akzent); padding-top:4px; }
+.zahlen span{ font-size:.86rem; color:var(--leise); }
+
+/* ---------- Karte ---------- */
+.karte{ background:var(--flaeche); border:1px solid var(--linie); border-radius:var(--radius); overflow:hidden; box-shadow:var(--schatten); }
+.ik-karte{ display:block; width:100%; height:auto; }
+.ik-meer{ fill:var(--meer); }
+.ik-land{ fill:var(--land); stroke:var(--kueste); stroke-width:.8; stroke-linejoin:round; }
+/* Kartendaten 1:10 Mio.: Seen, Flüsse, Ländergrenzen, Orte (karte.js) */
+.ik-see{ fill:var(--meer); stroke:var(--kueste); stroke-width:.6; }
+.ik-fluss{ stroke:var(--fluss, #93a9e6); stroke-width:1.1; stroke-linecap:round; stroke-linejoin:round; }
+.ik-grenze{ stroke:var(--kueste); stroke-width:.8; stroke-dasharray:4 3; opacity:.8; }
+.ik-ort circle{ fill:var(--leise); }
+.ik-ort text{ font:11px var(--schrift); fill:var(--leise); paint-order:stroke; stroke:var(--land); stroke-width:3px; stroke-linejoin:round; }
+.ik-ort.ik-gross text{ font-weight:600; fill:var(--text); }
+.ik-route{ stroke:var(--route); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; opacity:.8; }
+/* Linie je Verkehrsmittel (arten.js: linie) */
+.ik-l-wasser{ stroke-dasharray:8 6; }
+.ik-l-luft{ stroke-dasharray:3 6; }
+.ik-l-rad{ stroke-dasharray:7 3 1.5 3; }
+.ik-l-fuss{ stroke-dasharray:.1 5.5; stroke-width:3.2; }
+.ik-l-seil{ stroke-width:1.6; stroke-dasharray:12 2.5; }
+.ik-schwellen{ stroke:var(--route); stroke-width:7; stroke-dasharray:1.4 8; opacity:.8; }
+.ik-route.ik-heute{ stroke-width:3.6; opacity:1; }
+.ik-route.ik-leise{ opacity:.4; }
+.ik-symbol circle, .ik-fahrzeug circle{ fill:var(--flaeche); stroke:var(--route); stroke-width:1.4; }
+.ik-symbol path, .ik-fahrzeug path{ fill:var(--route); }
+.ik-symbol.ik-leise{ opacity:.5; }
+.ik-fahrzeug circle{ stroke-width:2.2; }
+/* Route abspielen (karte.js: abspielen) */
+.ik-punkt, .ik-name{ transition:opacity .35s; }
+.ik-verborgen{ opacity:0; }
+.ik-spielt .ik-symbol{ display:none; }
+/* Zoomen und Verschieben (karte.js: bedienen) */
+.karte.ik-beweglich{ position:relative; }
+.ik-beweglich .ik-karte{ touch-action:pan-y; cursor:grab; user-select:none; -webkit-user-select:none; }
+.ik-beweglich.ik-aktiv-karte .ik-karte{ touch-action:none; }
+.ik-beweglich.ik-aktiv-karte{ outline:2px solid var(--route); outline-offset:-2px; }
+.ik-zoom{ position:absolute; right:8px; top:8px; display:flex; flex-direction:column; gap:6px; }
+.ik-zoom button{ width:38px; height:38px; border-radius:10px; border:1px solid var(--linie); background:var(--flaeche); color:var(--text); font:600 20px/1 var(--schrift); display:grid; place-items:center; padding:0; box-shadow:0 1px 3px rgba(0,0,0,.15); cursor:pointer; }
+.ik-zoom button:hover{ border-color:var(--route); }
+.ik-tipp{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); max-width:80%; padding:10px 14px; border-radius:10px; background:rgba(20,24,48,.82); color:#fff; font:600 14px/1.35 var(--schrift); text-align:center; pointer-events:none; }
+.ik-tipp[hidden]{ display:none; }
+.ik-ungenau{ font:italic 11px var(--schrift); fill:var(--leise); paint-order:stroke; stroke:var(--land); stroke-width:3px; }
+.ik-beweglich.ik-aktiv-karte.ik-sofort{ outline:none; }
+.ik-zoom button:focus-visible{ outline:2px solid var(--route); outline-offset:2px; }
+/* Routenpunkte verschieben (Studio) */
+.ik-ziehen .ik-karte{ touch-action:none; }
+.ik-ziehbar{ cursor:move; }
+.ik-ziehbar circle{ stroke:var(--sonne, #fbbf24); stroke-width:3; }
+.ik-ziehbar.ik-zieht circle{ filter:drop-shadow(0 2px 4px rgba(0,0,0,.35)); }
+.ik-punkt circle{ fill:var(--akzent); stroke:var(--flaeche); stroke-width:2.2; }
+.ik-punkt text{ fill:var(--akzent-text); font:700 11px var(--schrift); text-anchor:middle; pointer-events:none; }
+.ik-punkt.ik-leise circle{ fill:var(--flaeche); stroke:var(--kueste); }
+.ik-punkt.ik-leise text{ fill:var(--leise); }
+.ik-punkt.ik-aktiv circle{ fill:var(--sonne-hell); stroke:var(--akzent-2); }
+.ik-punkt.ik-aktiv text{ fill:#1e1b4b; }
+.ik-punkt[data-tag]{ cursor:pointer; }
+.ik-name{ font:600 12.5px var(--schrift); fill:var(--text); paint-order:stroke; stroke:var(--land); stroke-width:3.5px; stroke-linejoin:round; }
+.ik-name.ik-leise{ fill:var(--leise); font-weight:400; }
+.ik-massstab path{ stroke:var(--leise); stroke-width:1.4; }
+.ik-massstab text{ font:11px var(--schrift); fill:var(--leise); text-anchor:middle; paint-order:stroke; stroke:var(--meer); stroke-width:3px; }
+.karte-hinweis{ font-size:.82rem; color:var(--leise); margin-top:8px; }
+.route-knoepfe{ margin:10px 0 0; }
+.route-knopf{ border:1px solid var(--linie); background:var(--flaeche); color:var(--text); border-radius:999px; padding:8px 16px; font-weight:600; min-height:40px; }
+.route-knopf:hover{ border-color:var(--route); }
+.route-knopf:focus-visible{ outline:2px solid var(--route); outline-offset:2px; }
+
+/* ---------- Übersicht der Tage ---------- */
+.tage{ display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px; }
+.tagkarte{ background:var(--flaeche); border:1px solid var(--linie); border-radius:var(--radius); overflow:hidden; text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:transform .15s, box-shadow .15s; }
+.tagkarte:hover{ transform:translateY(-3px); box-shadow:var(--schatten); }
+.tagkarte .bild{ aspect-ratio:16/10; background:linear-gradient(135deg,var(--akzent-hell),var(--flaeche-2)); display:grid; place-items:center; font-size:2.4rem; overflow:hidden; }
+.tagkarte .bild img{ width:100%; height:100%; object-fit:cover; }
+.tagkarte .inhalt{ padding:14px 16px 16px; display:grid; gap:4px; }
+.tagkarte .nr{ font-size:.76rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--akzent); }
+.tagkarte h3{ font-size:1.2rem; padding-top:2px; }
+.tagkarte .mehr{ font-size:.86rem; color:var(--leise); }
+.tagkarte.leer{ opacity:.7; }
+
+/* ---------- Tagesseite ---------- */
+.tagkopf{ padding:34px 0 8px; }
+.tagkopf .nr{ font-size:.8rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--akzent); display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.tagkopf h1{ font-size:clamp(2rem,5.4vw,3.4rem); margin-top:8px; text-wrap:balance; }
+.abzeichen{ display:inline-flex; gap:6px; align-items:center; background:var(--akzent-hell); color:var(--akzent-2); border-radius:999px; padding:3px 12px; font-size:.82rem; font-weight:600; letter-spacing:0; text-transform:none; }
+.tagkopf .ort{ margin-top:10px; color:var(--leise); display:flex; gap:6px; align-items:center; }
+.tagtext{ font-size:1.1rem; max-width:44em; margin-top:18px; }
+.zweispaltig{ display:grid; gap:28px; grid-template-columns:minmax(0,1fr); margin-top:28px; }
+@media (min-width:900px){ .zweispaltig.mit-karte{ grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); align-items:start; } .zweispaltig .karte-spalte{ position:sticky; top:74px; order:2; } }
+
+.zeitstrahl{ list-style:none; margin:0; padding:0; position:relative; }
+.zeitstrahl::before{ content:""; position:absolute; left:21px; top:10px; bottom:10px; width:2px; background:var(--linie); }
+.ereignis{ position:relative; padding:0 0 26px 60px; }
+.ereignis:last-child{ padding-bottom:0; }
+.ereignis .zeichen{ position:absolute; left:0; top:0; width:44px; height:44px; border-radius:50%; background:var(--flaeche); border:2px solid var(--akzent); display:grid; place-items:center; font-size:1.25rem; }
+.ereignis .karte-e{ background:var(--flaeche); border:1px solid var(--linie); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--schatten); }
+.ereignis .zeit{ font-size:.84rem; font-weight:700; color:var(--akzent); letter-spacing:.04em; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.ereignis .zeit .art{ color:var(--leise); font-weight:400; letter-spacing:0; }
+.ereignis h3{ font-size:1.35rem; margin-top:4px; padding-top:2px; overflow-wrap:anywhere; }
+.ereignis .ort{ font-size:.9rem; color:var(--leise); margin-top:3px; }
+.ereignis .fliess{ margin-top:10px; }
+.sterne{ color:var(--sonne); letter-spacing:2px; font-size:1rem; margin-top:8px; }
+.sterne span{ opacity:.28; }
+.fotos{ display:grid; gap:8px; margin-top:14px; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); }
+.fotos.eins{ grid-template-columns:1fr; }
+.fotos.zwei{ grid-template-columns:1fr 1fr; }
+.fotos button{ padding:0; border:0; background:var(--flaeche-2); border-radius:var(--radius-klein); overflow:hidden; aspect-ratio:4/3; cursor:zoom-in; }
+.fotos.eins button{ aspect-ratio:auto; max-height:560px; }
+.fotos button img{ width:100%; height:100%; object-fit:cover; }
+.fotos.eins button img{ height:auto; max-height:560px; }
+.bildtext{ font-size:.86rem; color:var(--leise); margin-top:6px; }
+.nichts{ background:var(--flaeche); border:1px dashed var(--linie); border-radius:var(--radius); padding:26px; color:var(--leise); text-align:center; }
+
+.blaettern{ display:flex; gap:12px; justify-content:space-between; margin:44px 0 0; }
+.blaettern a{ flex:1; max-width:48%; text-decoration:none; color:var(--text); background:var(--flaeche); border:1px solid var(--linie); border-radius:var(--radius); padding:12px 16px; display:grid; gap:2px; }
+.blaettern a:hover{ border-color:var(--akzent); }
+.blaettern a span{ font-size:.78rem; color:var(--leise); text-transform:uppercase; letter-spacing:.1em; }
+.blaettern a b{ font-family:var(--titel); font-size:1.05rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-top:2px; }
+.blaettern a.weiter{ text-align:right; margin-left:auto; }
+
+.schluss{ background:var(--flaeche); border:1px solid var(--linie); border-left:5px solid var(--sonne-hell); border-radius:var(--radius); padding:22px 24px; font-size:1.1rem; max-width:48em; }
+
+.fuss{ border-top:1px solid var(--linie); margin-top:64px; padding:26px 0 calc(26px + env(safe-area-inset-bottom)); font-size:.86rem; color:var(--leise); }
+.fuss .breite{ display:flex; flex-wrap:wrap; gap:6px 18px; justify-content:space-between; }
+
+/* ---------- Foto vergrößert ---------- */
+.lupe{ border:0; padding:0; background:rgba(8,8,22,.96); color:#fff; width:100vw; height:100dvh; max-width:none; max-height:none; margin:0; }
+.lupe[open]{ display:grid; grid-template-rows:1fr auto; place-items:center; }
+.lupe::backdrop{ background:rgba(8,8,22,.96); }
+.lupe img{ max-width:100vw; max-height:calc(100dvh - 70px); object-fit:contain; grid-row:1; }
+.lupe video{ max-width:100vw; max-height:calc(100dvh - 70px); grid-row:1; background:#000; }
+.lupe img[hidden], .lupe video[hidden]{ display:none; }
+.fotos button.video{ position:relative; cursor:pointer; }
+.fotos .spielen{ position:absolute; left:8px; bottom:8px; background:rgba(8,8,22,.75); color:#fff; border-radius:999px; padding:4px 11px; font-size:.86rem; font-weight:600; }
+.lupe p{ grid-row:2; padding:10px 60px 16px; text-align:center; min-height:54px; font-size:.95rem; }
+.lupe-knopf{ position:absolute; width:48px; height:48px; border-radius:50%; border:1px solid rgba(255,255,255,.35); background:rgba(20,20,45,.6); color:#fff; font-size:1.7rem; line-height:1; display:grid; place-items:center; z-index:2; }
+.lupe-zu{ top:12px; right:12px; }
+.lupe-vor{ left:10px; top:50%; transform:translateY(-50%); }
+.lupe-weiter{ right:10px; top:50%; transform:translateY(-50%); }
+.lupe-knopf[hidden]{ display:none; }
+
+@media (max-width:600px){
+  body{ font-size:16px; }
+  .abschnitt{ padding:40px 0; }
+  .ereignis{ padding-left:0; padding-top:54px; }
+  .zeitstrahl::before{ display:none; }
+  .ereignis .zeichen{ left:14px; top:26px; z-index:1; }
+  .ereignis .karte-e{ padding:30px 14px 14px; }
+  .ereignis:first-child{ padding-top:28px; } .ereignis:first-child .zeichen{ top:0; }
+  .ereignis + .ereignis{ padding-top:44px; } .ereignis + .ereignis .zeichen{ top:16px; }
+  .blaettern a{ padding:10px 12px; }
+}
+@media print{
+  .kopf, .tagesleiste, .blaettern, .lupe{ display:none !important; }
+  body{ background:#fff; }
+  .ereignis .karte-e, .karte{ box-shadow:none; }
+}

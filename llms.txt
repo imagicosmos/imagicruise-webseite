@@ -1,0 +1,31 @@
+# Imagicruise
+
+> Imagicruise ist ein Programm für Reiseberichte: Für jeden Tag einer Reise gibt es eine Seite mit allen Ereignissen (Sehenswürdigkeiten, Veranstaltungen, Ausflüge, Essen), Fotos und der Route auf einer gezeichneten Karte. Sprache: Deutsch.
+
+Wichtige Fakten:
+
+- **Läuft auf dem eigenen Gerät:** als installierbare Web-App auf dem Handy (Android mit Chrome) und im Browser am PC. Kein Konto, kein Upload der Fotos, keine Nutzungsstatistik.
+- **Aufbau:** Reise → Tage (je Kalendertag einer) → Ereignisse mit Art, Uhrzeit, Ort, Text, Bewertung und Fotos. Für Kreuzfahrten gibt es Hafentage und Seetage; das Programm passt aber für jede Art von Reise.
+- **Fotos einlesen:** Alle Fotos einer Reise auf einmal; sie werden nach Aufnahmedatum den Tagen zugeordnet und zu Ereignissen gebündelt. Uhrzeit und Position kommen aus dem Foto. Gespeichert werden die Fotos verkleinert und ohne Ortsdaten.
+- **Fotos und Videos bearbeiten:** Fotos drehen, zuschneiden, automatisch verbessern, Licht, Farbe, Filter (das Original bleibt erhalten). Kurze Videos bis 60 Sekunden zuschneiden; sie werden ohne Ortsdaten neu geschrieben.
+- **Texte:** diktieren (Spracherkennung des Browsers), Infos zum Ort aus der Wikipedia übernehmen, KI-Hilfe ohne eigenen Dienst (die Frage geht über die KI-App des Nutzers, Imagicruise sendet nichts).
+- **Karte:** Die Route wird aus mitgelieferten Küstenlinien gezeichnet (Natural Earth). Kein Kartendienst, funktioniert ohne Netz.
+- **Abgleich zwischen Handy und PC:** über ein Reisepaket (ZIP-Datei mit Reise und Fotos). Beide Stände werden zusammengeführt, je Tag und je Ereignis gilt der neuere.
+- **Ohne Netz nutzbar:** Die Web-App läuft nach dem ersten Öffnen ohne Internet. Nur die Ortssuche, die Infos zum Ort (Wikipedia) und das Diktieren (Spracherkennung des Browsers) brauchen eine Verbindung.
+- **Reisebericht:** eine kleine Webseite als Ordner oder ZIP-Datei: Titelseite, Karte, je Tag ein Zeitstrahl, Fotos zum Vergrößern, hell und dunkel. Sie lädt nichts von fremden Servern und lässt sich auf beliebigen Webspace legen oder per Doppelklick öffnen.
+- **Passwort:** In der Beta hat der Reisebericht noch kein Passwort.
+- **Kosten:** derzeit kostenlos.
+- **Stand:** erste Beta (November 2026). Nicht in einem App-Store.
+
+## Seiten
+
+- [Startseite](https://imagicruise.de/): Beispiele, Funktionen, Ablauf, Datenschutz, Weg zur App
+- [Beispiel-Reisebericht](https://imagicruise.de/beispiel/index.html): erfundene Kreuzfahrt „Westliches Mittelmeer“
+- [Web-App](https://imagicosmos.github.io/imagicruise-app/)
+- [Datenschutz](https://imagicruise.de/datenschutz.html): Webseite und Programm
+
+## Verwandt
+
+- [Imagicosmos](https://imagicosmos.github.io/imagicosmos-webseite/): das Dach über Imagicruise und seinen Geschwistern
+- [Imagichron](https://imagichron.de/): persönliche Bilder-Zeitreisen (Windows-Programm) aus derselben Familie
+- Imagiclique: Status-Bilder für WhatsApp aus eigenen Fotos

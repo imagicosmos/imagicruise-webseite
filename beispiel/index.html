@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de" data-modus="hell">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Der Reisebericht lädt nichts von fremden Servern: Skripte, Schrift und Fotos liegen alle in diesem Ordner. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<!-- Ohne Passwort ist der Bericht für jeden lesbar, der die Adresse kennt. Suchmaschinen sollen ihn nicht aufnehmen. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Westliches Mittelmeer – Reisebericht</title>
+<meta name="description" content="Westliches Mittelmeer: Acht Tage, sechs Häfen und ein Tag nur Meer">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="modus.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<div id="app"><p class="lade">Der Reisebericht wird geladen …</p></div>
+<noscript><p class="lade">Dieser Reisebericht braucht JavaScript.</p></noscript>
+
+<dialog class="lupe" id="lupe" aria-label="Foto vergrößert">
+  <button type="button" class="lupe-knopf lupe-zu" id="lupe-zu" aria-label="Schließen">×</button>
+  <button type="button" class="lupe-knopf lupe-vor" id="lupe-vor" aria-label="Vorheriges Foto">‹</button>
+  <button type="button" class="lupe-knopf lupe-weiter" id="lupe-weiter" aria-label="Nächstes Foto">›</button>
+  <img id="lupe-bild" src="data:," alt="">
+  <video id="lupe-video" controls playsinline preload="metadata" hidden></video>
+  <p id="lupe-text"></p>
+</dialog>
+
+<script src="arten.js"></script>
+<script src="karte.js"></script>
+<script src="weltkarte.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

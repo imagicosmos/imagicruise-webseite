@@ -1,0 +1,18 @@
+{
+  "hinweis": "Kopien aus dem Repo imagicosmos/bausteine. Nicht von Hand ändern; prüfen mit: node pruefen.js",
+  "bausteine": {
+    "zauberstab": {
+      "version": "1.0.0",
+      "hauptdatei": "zauberstab.js",
+      "dateien": {
+        "zauberstab.js": "f84ac6251df9bdebb9dcd1e6428f1fc3870eb8e335ea9b65d4f941c66e823a9a"
+      }
+    },
+    "_pruefen": {
+      "version": "1.0.0",
+      "dateien": {
+        "pruefen.js": "db91ade26e1760537f8fea2d4f67777e5790360a8fa873373da2a34b5945f8e6"
+      }
+    }
+  }
+}

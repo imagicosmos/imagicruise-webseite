@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="de" data-modus="hell">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Imagicruise – Reiseberichte, Tag für Tag</title>
+<meta name="description" content="Imagicruise macht aus einer Reise einen Reisebericht: für jeden Tag eine Seite mit allen Ereignissen, Fotos und der Route auf der Karte. Am Handy unterwegs festhalten, am PC ausarbeiten. Ohne Konto, die Fotos bleiben bei dir.">
+<link rel="canonical" href="https://imagicruise.de/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://imagicruise.de/">
+<meta property="og:title" content="Imagicruise – Reiseberichte, Tag für Tag">
+<meta property="og:description" content="Eure Reise. Station für Station. Jeder Tag mit seinen Ereignissen, Fotos und der Route auf der Karte.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://imagicruise.de/bilder/teilen.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Imagicruise: Eure Reise. Station für Station. Daneben ein Reisebericht auf dem Bildschirm und auf dem Handy.">
+<meta property="og:site_name" content="Imagicruise">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="bilder/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="bilder/apple-touch-icon.png">
+<script src="modus.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Imagicruise",
+      "url": "https://imagicruise.de/",
+      "description": "Programm für Reiseberichte: für jeden Tag einer Reise eine Seite mit Ereignissen, Fotos und der Route auf einer gezeichneten Karte. Läuft als Android-App oder Web-App auf dem Handy und als Studio auf dem PC, ohne Konto.",
+      "downloadUrl": "https://imagicruise.de/imagicruise.apk",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Android, Windows",
+      "inLanguage": "de",
+      "image": "https://imagicruise.de/bilder/teilen.jpg",
+      "screenshot": ["https://imagicruise.de/bilder/bericht-titel.webp", "https://imagicruise.de/bilder/studio-tage.webp"],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Derzeit kostenlos (Beta)." },
+      "publisher": { "@type": "Organization", "name": "Imagicruise", "url": "https://imagicruise.de/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Brauche ich ein Konto?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Du öffnest Imagicruise und legst los. Es gibt keine Anmeldung und kein Benutzerkonto." } },
+        { "@type": "Question", "name": "Wo liegen meine Reisen und Fotos?", "acceptedAnswer": { "@type": "Answer", "text": "Auf deinem eigenen Gerät: am Handy im Speicher des Browsers, am PC in einem Ordner. Imagicruise überträgt nichts an uns." } },
+        { "@type": "Question", "name": "Wie kommen die Einträge vom Handy auf den PC?", "acceptedAnswer": { "@type": "Answer", "text": "Über ein Reisepaket: eine Datei mit der ganzen Reise samt Fotos. Du speicherst sie auf dem einen Gerät und liest sie auf dem anderen ein. Imagicruise führt beide Stände zusammen, für jeden Tag und jedes Ereignis gilt der neuere." } },
+        { "@type": "Question", "name": "Funktioniert Imagicruise ohne Internet?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Nach dem ersten Öffnen läuft die App auf dem Handy ohne Netz, zum Beispiel auf dem Schiff. Nur die Ortssuche, die Infos zum Ort aus der Wikipedia und das Diktieren brauchen Internet; die Position lässt sich auch aus dem Foto, über den Standort oder als Koordinaten übernehmen." } },
+        { "@type": "Question", "name": "Wer kann meinen Reisebericht sehen?", "acceptedAnswer": { "@type": "Answer", "text": "Nur wer die Adresse kennt, unter der du ihn selbst ins Internet stellst. In der Beta gibt es noch kein Passwort; der Bericht bittet Suchmaschinen, ihn nicht aufzunehmen. Du kannst ihn auch nur als Ordner weitergeben oder auf dem eigenen Gerät ansehen." } },
+        { "@type": "Question", "name": "Ist Imagicruise nur für Kreuzfahrten?", "acceptedAnswer": { "@type": "Answer", "text": "Nein. Es passt für jede Reise: Rundreise, Städtereise, Wanderwoche, Strandurlaub. Für Kreuzfahrten gibt es zusätzlich Hafentage und Seetage." } }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <div class="breite">
+    <a class="logo" href="#"><span class="logo-zeichen" aria-hidden="true"></span><span class="logo-wort">Imagi<span class="logo-teil">cruise</span></span></a>
+    <nav aria-label="Hauptmenü">
+      <a href="#warum">Warum</a>
+      <a href="#ansehen">Ansehen</a>
+      <a href="#funktionen">Funktionen</a>
+      <a href="#ablauf">So geht’s</a>
+      <a href="#datenschutz">Datenschutz</a>
+      <a href="#fragen">Fragen</a>
+    </nav>
+    <button type="button" class="modus-knopf" id="modus-knopf" aria-label="Zu dunklem Design wechseln">
+      <svg class="sonne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="mond" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+    </button>
+    <a class="knopf klein kopf-app" href="#ausprobieren"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M12 15l-4-4M12 15l4-4M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg><span>App<span class="lang-wort"> laden</span></span></a>
+  </div>
+</header>
+
+<main id="inhalt">
+  <div class="leuchten" aria-hidden="true"></div>
+
+  <!-- ===================== EINSTIEG ===================== -->
+  <section class="breite held">
+    <div class="held-text">
+      <p class="vorzeile">Reiseberichte, Tag für Tag</p>
+      <h1><span class="vorlesen">Eure Reise.</span><span class="wechsel" id="wechsel" aria-hidden="true" data-woerter="Eure Kreuzfahrt.|Eure Rundreise.|Euer Urlaub.|Eure Reise." data-ruhig="Eure Reise.">Eure Reise.</span><br><span class="hervor">Station für Station.</span></h1>
+      <p class="unter">Imagicruise hält fest, was ihr unterwegs erlebt: für jeden Tag eine Seite, darauf jede Sehenswürdigkeit, jeder Ausflug, jedes Abendessen – mit Fotos und der Route auf der Karte. Am Ende steht ein Reisebericht, den ihr zeigen könnt.</p>
+      <div>
+        <div class="knoepfe">
+          <a class="knopf" href="beispiel/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Beispiel ansehen</a>
+          <a class="knopf zweit" href="#ausprobieren">Selbst ausprobieren</a>
+        </div>
+        <ul class="merkmale">
+          <li>am Handy und am PC</li><li>kein Konto nötig</li><li>Fotos bleiben bei dir</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="buehne">
+      <div class="fenster"><img src="bilder/bericht-titel.webp" width="1440" height="900" alt="Titelseite eines Reiseberichts: „Westliches Mittelmeer“, darüber die Leiste mit den Tagen der Reise" fetchpriority="high"></div>
+      <img class="handy" src="bilder/bericht-handy.webp" width="824" height="1830" alt="Der zweite Tag der Reise auf dem Handy: Marseille mit Karte und Ereignissen">
+    </figure>
+  </section>
+
+  <div class="jahrband" aria-hidden="true"><div class="jahrband-spur" id="laufband" data-woerter="Anreise|Hafentag|Seetag|Ausflug|Sehenswürdigkeit|Veranstaltung|Natur|Essen &amp; Trinken|Begegnung|Abreise"></div></div>
+
+  <!-- ===================== WARUM ===================== -->
+  <section class="abschnitt eng" id="warum">
+    <div class="breite">
+      <div class="abschnitt-kopf zeigen">
+        <p class="vorzeile">Warum Imagicruise</p>
+        <h2>Damit von der Reise mehr bleibt als ein Ordner voller Fotos.</h2>
+        <p>Nach drei Wochen weiß niemand mehr, in welcher Stadt die schöne Kirche stand. Imagicruise ordnet die Reise so, wie ihr sie erlebt habt: Tag für Tag, Ereignis für Ereignis.</p>
+      </div>
+      <div class="gruende">
+        <article class="kachel zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+          <h3>Jeder Tag hat seine Seite</h3>
+          <p>Ihr gebt Titel und Zeitraum ein, und für jeden Tag der Reise steht eine Seite bereit. Dort sammelt ihr, was passiert ist – mit Uhrzeit, Ort, ein paar Sätzen und Fotos.</p>
+        </article>
+        <article class="kachel zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg></div>
+          <h3>Die Fotos ordnen sich selbst</h3>
+          <p>Wählt alle Fotos der Reise auf einmal. Imagicruise legt sie nach dem Aufnahmedatum auf die Tage und bündelt sie zu Ereignissen. Uhrzeit und Ort kommen aus dem Foto.</p>
+        </article>
+        <article class="kachel zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+          <h3>Unterwegs und zu Hause</h3>
+          <p>Am Handy haltet ihr abends kurz fest, was war. Am PC arbeitet ihr die Reise später in Ruhe aus. Es ist dasselbe Programm, und beide Stände lassen sich zusammenführen.</p>
+        </article>
+        <article class="kachel zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg></div>
+          <h3>Die Route auf einen Blick</h3>
+          <p>Aus den Orten entsteht eine Karte mit eurer Route. Sie ist gezeichnet und gehört zum Reisebericht – kein Kartendienst schaut euren Lesern über die Schulter.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SO SIEHT ES AUS ===================== -->
+  <section class="abschnitt" id="ansehen">
+    <div class="breite">
+      <div class="abschnitt-kopf zeigen">
+        <p class="vorzeile">So sieht es aus</p>
+        <h2>Ein Reisebericht zum Durchblättern.</h2>
+        <p>Die Bilder zeigen das echte Programm mit einer erfundenen Kreuzfahrt durchs westliche Mittelmeer. Den ganzen Bericht könnt ihr <a href="beispiel/index.html">hier selbst durchblättern</a>.</p>
+      </div>
+      <div class="galerie breit-handy">
+        <figure class="zeigen">
+          <a class="bild-link" href="bilder/bericht-tag.webp"><img src="bilder/bericht-tag.webp" width="1440" height="900" loading="lazy" alt="Tagesseite „Ein Tag in Rom“: links der Zeitstrahl mit dem Kolosseum, rechts die Karte mit der Strecke des Tages"></a>
+          <figcaption><b>Ein Tag.</b> Links die Ereignisse in der Reihenfolge des Tages, rechts die Strecke auf der Karte.</figcaption>
+        </figure>
+        <figure class="zeigen">
+          <a class="bild-link" href="bilder/bericht-route.webp"><img src="bilder/bericht-route.webp" width="1040" height="542" loading="lazy" alt="Gezeichnete Karte des westlichen Mittelmeers mit der Route von Barcelona über Marseille, La Spezia, Civitavecchia, Neapel und Palma zurück"></a>
+          <figcaption><b>Die Route.</b> Die Zahlen sind die Tage der Reise. Ein Klick auf eine Marke öffnet den Tag.</figcaption>
+        </figure>
+        <figure class="zeigen">
+          <a class="bild-link" href="bilder/bericht-handy.webp"><img src="bilder/bericht-handy.webp" width="824" height="1830" loading="lazy" alt="Der Reisebericht auf dem Handy: Tag 2, Marseille, mit Karte"></a>
+          <figcaption><b>Auf dem Handy.</b> Der Bericht passt sich an jeden Bildschirm an.</figcaption>
+        </figure>
+      </div>
+
+      <h3 class="zwischen zeigen">Und so entsteht er: das Studio</h3>
+      <div class="galerie breit-handy">
+        <figure class="zeigen">
+          <a class="bild-link" href="bilder/studio-tage.webp"><img src="bilder/studio-tage.webp" width="1440" height="900" loading="lazy" alt="Das Studio am PC: oben die Tage der Reise, links die Angaben zum Tag, rechts die Ereignisse mit Fotos"></a>
+          <figcaption><b>Tage und Ereignisse.</b> Oben die Tage, darunter der gewählte Tag mit allem, was dazugehört.</figcaption>
+        </figure>
+        <figure class="zeigen">
+          <a class="bild-link" href="bilder/studio-ereignis.webp"><img src="bilder/studio-ereignis.webp" width="1440" height="900" loading="lazy" alt="Ein Ereignis bearbeiten: Art, Titel, Uhrzeit, Ort, Text, Bewertung und Fotos"></a>
+          <figcaption><b>Ein Ereignis.</b> Art, Uhrzeit, Ort, Text, Sterne und Fotos mit Bildtext.</figcaption>
+        </figure>
+        <figure class="zeigen">
+          <a class="bild-link" href="bilder/studio-handy.webp"><img src="bilder/studio-handy.webp" width="824" height="1830" loading="lazy" alt="Das Studio auf dem Handy mit den Ereignissen eines Tages"></a>
+          <figcaption><b>Unterwegs.</b> Dieselbe Oberfläche auf dem Handy.</figcaption>
+        </figure>
+      </div>
+      <p class="galerie-hinweis">Die Beispielfotos sind frei lizenzierte Aufnahmen aus Wikimedia Commons, siehe <a href="impressum.html#bildnachweis">Bildnachweis</a>.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FUNKTIONEN ===================== -->
+  <section class="abschnitt eng" id="funktionen">
+    <div class="breite">
+      <div class="abschnitt-kopf zeigen">
+        <p class="vorzeile">Funktionen</p>
+        <h2>Alles, was ein Reisebericht braucht.</h2>
+        <p>Von der ersten Notiz am Abend bis zur fertigen Seite für Familie und Freunde.</p>
+      </div>
+      <div class="bento">
+        <article class="kachel k1 zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+          <h3>Tage, Ereignisse, Fotos</h3>
+          <p>Jeder Tag bekommt Überschrift, Ort und ein paar Sätze. Jedes Ereignis hat eine Art – Sehenswürdigkeit, Veranstaltung, Ausflug, Essen und mehr –, dazu Uhrzeit, Ort, Text, Sterne und Fotos mit Bildtext. Fotos lassen sich drehen, zuschneiden und aufhellen, kurze Videos kürzen; Texte könnt ihr diktieren. Für Kreuzfahrten gibt es Hafentage und Seetage.</p>
+          <div class="mini-tage" aria-hidden="true"><i>Tag 1</i><i>Tag 2</i><i class="an">Tag 3</i><i>Tag 4</i><i>Tag 5</i><i>Tag 6</i><i>Tag 7</i></div>
+        </article>
+        <article class="kachel k2 zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+          <h3>Karte ohne Kartendienst</h3>
+          <p>Küstenlinien und Route werden gezeichnet. Das funktioniert auch ohne Netz.</p>
+          <div class="mini-route" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="kachel k3 zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11M4 17h11M15 4l4 3-4 3M9 14l-4 3 4 3"/></svg></div>
+          <h3>Abgleich zwischen Handy und PC</h3>
+          <p>Ein Reisepaket nimmt die ganze Reise samt Fotos mit auf das andere Gerät. Dort werden beide Stände zusammengeführt: Was ihr am Handy geschrieben und am PC verbessert habt, bleibt beides erhalten.</p>
+        </article>
+        <article class="kachel k4 zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/><path d="M12 8v4l3 2"/></svg></div>
+          <h3>Läuft ohne Netz</h3>
+          <p>Auf dem Schiff, im Gebirge, im Ausland: Die App auf dem Handy braucht nach dem ersten Öffnen kein Internet. Gespeichert wird von selbst.</p>
+        </article>
+        <article class="kachel k5 zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10"/></svg></div>
+          <h3>Vorschau und Prüfliste</h3>
+          <p>Jederzeit seht ihr, wie der Bericht aussehen wird. Die Prüfliste sagt, was noch fehlt: ein Tag ohne Eintrag, ein Ereignis ohne Titel, ein Ort ohne Position.</p>
+        </article>
+        <article class="kachel k7 zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+          <h3>Ein Bericht, der überall läuft</h3>
+          <p>Der fertige Reisebericht ist ein Ordner mit einer kleinen Webseite. Ihr legt ihn auf einen Webspace eurer Wahl oder öffnet ihn einfach per Doppelklick.</p>
+        </article>
+        <article class="kachel k6 zeigen">
+          <div class="symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.500 9.500l-4.700 1.800L12 16l-1.800-4.700L5.500 9.500l4.700-1.800z"/></svg></div>
+          <div><h3>Mit dem Beispiel anfangen</h3><p>Im Programm lässt sich die Beispielreise laden. So seht ihr sofort, wie eine ausgefüllte Reise aussieht, und könnt alles gefahrlos ausprobieren.</p></div>
+          <a class="knopf zweit klein" href="#ablauf">So geht’s →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SO GEHT'S ===================== -->
+  <section class="abschnitt eng" id="ablauf">
+    <div class="breite">
+      <div class="abschnitt-kopf zeigen">
+        <p class="vorzeile">So geht’s</p>
+        <h2>In drei Schritten zum Reisebericht.</h2>
+      </div>
+      <div class="schritte">
+        <div class="schritt zeigen"><h3>Reise anlegen</h3><p>Titel, Art der Reise, erster und letzter Tag. Mehr braucht es nicht: Für jeden Tag steht sofort eine Seite bereit.</p></div>
+        <div class="schritt zeigen"><h3>Tage füllen</h3><p>Unterwegs am Handy ein Ereignis nach dem anderen – oder zu Hause alle Fotos auf einmal einlesen und nur noch Titel und Text ergänzen.</p></div>
+        <div class="schritt zeigen"><h3>Fertigstellen</h3><p>Vorschau ansehen, Prüfliste durchgehen, Reisebericht erzeugen. Der Ordner kommt auf euren Webspace oder direkt zu Familie und Freunden.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DATENSCHUTZ ===================== -->
+  <section class="abschnitt eng" id="datenschutz">
+    <div class="breite schutz">
+      <div class="abschnitt-kopf zeigen">
+        <p class="vorzeile">Datenschutz</p>
+        <h2>Eure Reise gehört euch.</h2>
+        <p>Imagicruise ist kein Online-Dienst. Reisen und Fotos liegen auf eurem Gerät, und ihr entscheidet, was ihr wem zeigt. Die Einzelheiten stehen im <a href="datenschutz.html#programm">Datenschutzhinweis zum Programm</a>.</p>
+      </div>
+      <ul class="schutz-liste">
+        <li class="zeigen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg><div><b>Läuft auf eurem Gerät</b><span>Kein Konto, keine Anmeldung, keine Daten bei uns.</span></div></li>
+        <li class="zeigen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><path d="M4 4l16 16"/></svg><div><b>Ortsdaten bleiben nicht im Foto</b><span>Fotos werden verkleinert neu gespeichert. Aufnahmeort und Kameradaten stehen danach nicht mehr im Bild.</span></div></li>
+        <li class="zeigen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/><path d="M3 3l18 18"/></svg><div><b>Keine Statistik, keine Werbung</b><span>Weder das Programm noch der Reisebericht zählen mit, wer was ansieht.</span></div></li>
+        <li class="zeigen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M5 5l14 14"/></svg><div><b>Nichts von fremden Servern</b><span>Der Reisebericht bringt Schrift, Karte und Fotos selbst mit. Eure Leser werden nirgendwohin weitergereicht.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== AUSPROBIEREN ===================== -->
+  <!-- 0.1.64 vom 21.11.2026 und 9,8 MB setzt werkzeuge/veroeffentlichen.py beim Veröffentlichen ein; die Datei imagicruise.apk (Freigabe-Fassung) kommt dabei dazu. -->
+  <section class="abschnitt eng" id="ausprobieren">
+    <div class="breite">
+      <div class="download-karte zeigen">
+        <div class="dl-links">
+          <span class="abzeichen">Beta</span>
+          <h2>Imagicruise ausprobieren</h2>
+          <p class="leise">Auf dem Handy nehmt ihr am besten die Android-App. Sie liest den Aufnahmeort eurer Fotos, damit Orte und Route sich fast von selbst ergeben. Im Play Store gibt es sie noch nicht: Ihr ladet sie als Datei von dieser Seite und installiert sie selbst.</p>
+          <ol class="schritte-liste">
+            <li>Diese Seite auf dem <b>Android-Handy</b> öffnen und auf „Android-App laden“ tippen.</li>
+            <li>Die geladene Datei öffnen. Android fragt, ob der Browser Apps installieren darf: <b>einmal erlauben</b>, dann „Installieren“.</li>
+            <li>Imagicruise starten, „Beispielreise ansehen“ antippen oder gleich eine eigene Reise anlegen. Gibt es eine neue Fassung, sagt die App Bescheid.</li>
+          </ol>
+          <div class="knoepfe">
+            <a class="knopf" href="imagicruise.apk" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M12 15l-4-4M12 15l4-4M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>Android-App laden</a>
+            <a class="knopf zweit" href="https://imagicosmos.github.io/imagicruise-app/" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>Web-App öffnen</a>
+            <a class="knopf zweit" href="beispiel/index.html">Beispiel-Reisebericht</a>
+          </div>
+          <p class="leise dl-bedingungen">Ohne Datei geht es auch als <b>Web-App</b> in Chrome, am Handy oder am PC: „Web-App öffnen“ antippen, am Handy dann im Menü <b>⋮</b> „App installieren“ wählen. Sie aktualisiert sich von selbst und läuft auch ohne Netz, kann den Aufnahmeort der Fotos aber nicht lesen.</p>
+          <p class="leise dl-bedingungen">App und Web-App werden über GitHub Pages ausgeliefert. Was sie mit Daten macht: <a href="datenschutz.html#programm">Datenschutz im Programm</a>. Das Studio für den PC, das Reisen als Ordner auf der Festplatte ablegt, gibt es in der Beta noch nicht als Installationsprogramm.</p>
+        </div>
+        <dl class="dl-daten">
+          <dt>Stand</dt><dd>erste Beta, November 2026</dd>
+          <dt>Handy</dt><dd>Android 10 oder neuer</dd>
+          <dt>Fassung</dt><dd>0.1.64 vom 21.11.2026</dd>
+          <dt>Größe</dt><dd>9,8 MB</dd>
+          <dt>PC</dt><dd>im Browser (Edge, Chrome)</dd>
+          <dt>Preis</dt><dd>derzeit kostenlos</dd>
+          <dt>Konto</dt><dd>nicht nötig</dd>
+          <dt>Passwort für Berichte</dt><dd>noch nicht</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FRAGEN ===================== -->
+  <section class="abschnitt eng" id="fragen">
+    <div class="breite">
+      <div class="abschnitt-kopf zeigen">
+        <p class="vorzeile">Fragen</p>
+        <h2>Gut zu wissen.</h2>
+      </div>
+      <div class="fragen">
+        <details class="zeigen"><summary>Brauche ich ein Konto?</summary><p>Nein. Du öffnest Imagicruise und legst los. Es gibt keine Anmeldung und kein Benutzerkonto.</p></details>
+        <details class="zeigen"><summary>Wo liegen meine Reisen und Fotos?</summary><p>Auf deinem eigenen Gerät: am Handy im Speicher des Browsers, am PC in einem Ordner. Imagicruise überträgt nichts an uns.</p></details>
+        <details class="zeigen"><summary>Wie kommen die Einträge vom Handy auf den PC?</summary><p>Über ein Reisepaket: eine Datei mit der ganzen Reise samt Fotos. Du speicherst sie auf dem einen Gerät und liest sie auf dem anderen ein. Imagicruise führt beide Stände zusammen, für jeden Tag und jedes Ereignis gilt der neuere.</p></details>
+        <details class="zeigen"><summary>Funktioniert Imagicruise ohne Internet?</summary><p>Ja. Nach dem ersten Öffnen läuft die App auf dem Handy ohne Netz, zum Beispiel auf dem Schiff. Nur die Ortssuche, die Infos zum Ort aus der Wikipedia und das Diktieren brauchen Internet; die Position lässt sich auch aus dem Foto, über den Standort oder als Koordinaten übernehmen.</p></details>
+        <details class="zeigen"><summary>Wer kann meinen Reisebericht sehen?</summary><p>Nur wer die Adresse kennt, unter der du ihn selbst ins Internet stellst. In der Beta gibt es noch kein Passwort; der Bericht bittet Suchmaschinen, ihn nicht aufzunehmen. Du kannst ihn auch nur als Ordner weitergeben oder auf dem eigenen Gerät ansehen.</p></details>
+        <details class="zeigen"><summary>Ist Imagicruise nur für Kreuzfahrten?</summary><p>Nein. Es passt für jede Reise: Rundreise, Städtereise, Wanderwoche, Strandurlaub. Für Kreuzfahrten gibt es zusätzlich Hafentage und Seetage.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="breite">
+    <a class="logo" href="#"><span class="logo-zeichen" aria-hidden="true"></span><span class="logo-wort">Imagi<span class="logo-teil">cruise</span></span></a>
+    <span>© 2026 Imagicruise</span>
+    <nav aria-label="Rechtliches"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+    <span class="familie">Ein Projekt von <a href="https://imagicosmos.github.io/imagicosmos-webseite/" rel="noopener">Imagicosmos</a> – Programme, die aus Fotos etwas machen.</span>
+  </div>
+</footer>
+
+<dialog class="lupe" id="lupe" aria-label="Bild vergrößert">
+  <button type="button" class="lupe-zu" id="lupe-zu" aria-label="Schließen">×</button>
+  <img id="lupe-bild" src="data:," alt="">
+  <p id="lupe-text"></p>
+</dialog>
+
+<script src="app.js"></script>
+<script src="bausteine/zauberstab.js" data-stern="#818cf8" data-band="#c7d2fe" defer></script>
+</body>
+</html>
