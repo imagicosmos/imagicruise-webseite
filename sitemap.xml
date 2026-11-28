@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Nur Seiten, die in Suchmaschinen erscheinen sollen (Rechtstexte und der Beispiel-Reisebericht haben „noindex“). Bei Änderungen lastmod anpassen. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://imagicruise.de/</loc><lastmod>2026-11-18</lastmod></url>
+</urlset>
